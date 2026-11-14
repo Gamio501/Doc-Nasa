@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "run_id": "2026-10-ej0001",
+  "entorno": "dev",
+  "periodo": "2026-10",
+  "zonas": [
+    {
+      "zona_id": "PIU-SUL-01",
+      "nombre": "Sullana - zona de ejemplo",
+      "provincia": "Sullana",
+      "celdas": ["PIU-0412", "PIU-0413"],
+      "indicadores": [
+        {
+          "id": "ind-temp_max",
+          "nombre": "temperatura más alta",
+          "valor": 33.4,
+          "unidad": "°C",
+          "periodo": "2026-10",
+          "valor_normal": 31.2,
+          "diferencia_pct": 7.1,
+          "resolucion_km": 55,
+          "fuente": "NASA POWER T2M_MAX",
+          "confianza": "alta",
+          "escala": "zona",
+          "semaforo": "amarillo"
+        },
+        {
+          "id": "ind-lluvia_mes",
+          "nombre": "lluvia del mes",
+          "valor": 2.0,
+          "unidad": "mm",
+          "periodo": "2026-10",
+          "valor_normal": 5.0,
+          "diferencia_pct": -60.0,
+          "resolucion_km": 55,
+          "fuente": "NASA POWER PRECTOTCORR",
+          "confianza": "media",
+          "escala": "zona",
+          "semaforo": "rojo"
+        },
+        {
+          "id": "ind-humedad_suelo",
+          "nombre": "humedad del suelo",
+          "valor": 0.12,
+          "unidad": "m3/m3",
+          "periodo": "2026-10",
+          "valor_normal": 0.18,
+          "diferencia_pct": -33.3,
+          "resolucion_km": 9,
+          "fuente": "SMAP SPL3SMP_E",
+          "confianza": "media",
+          "escala": "zona",
+          "semaforo": "rojo"
+        },
+        {
+          "id": "ind-vegetacion",
+          "nombre": "salud de las plantas (vegetación)",
+          "valor": null,
+          "unidad": "índice 0-1",
+          "periodo": "2026-10",
+          "valor_normal": 0.55,
+          "diferencia_pct": null,
+          "resolucion_km": 0.25,
+          "fuente": "MODIS MOD13Q1",
+          "confianza": "baja",
+          "escala": "parcela",
+          "semaforo": "sin_dato"
+        }
+      ],
+      "aptitud_cultivos": [
+        {
+          "cultivo_id": "limon",
+          "cultivo_nombre": "limón",
+          "temporada": "nov-dic",
+          "puntaje": 74.0,
+          "nivel": "alto",
+          "subpuntajes": {"agua": 60, "ingresos": 85, "suelo": 70, "erosion": 80, "clima": 75, "mercado": 90},
+          "factores": [
+            {"regla_id": "R-LIM-CALOR", "efecto": "a_favor", "descripcion": "El limón aguanta bien el calor de la zona", "indicador_ids": ["ind-temp_max"]},
+            {"regla_id": "R-LIM-AGUA", "efecto": "en_contra", "descripcion": "Necesita riego frecuente y la tierra está seca", "indicador_ids": ["ind-humedad_suelo", "ind-lluvia_mes"]}
+          ],
+          "confianza": "media"
+        },
+        {
+          "cultivo_id": "mango",
+          "cultivo_nombre": "mango",
+          "temporada": "nov-dic",
+          "puntaje": 61.0,
+          "nivel": "medio",
+          "subpuntajes": {"agua": 70, "ingresos": 75, "suelo": 60, "erosion": 70, "clima": 50, "mercado": 80},
+          "factores": [
+            {"regla_id": "R-MAN-SEQUIA", "efecto": "a_favor", "descripcion": "El mango adulto tolera meses secos", "indicador_ids": ["ind-lluvia_mes"]},
+            {"regla_id": "R-MAN-FLORACION", "efecto": "en_contra", "descripcion": "El calor fuerte puede afectar la floración", "indicador_ids": ["ind-temp_max"]}
+          ],
+          "confianza": "media"
+        }
+      ],
+      "rotaciones": [
+        {
+          "rotacion_id": "actual",
+          "nombre": "Rotación actual",
+          "es_actual": true,
+          "secuencia": ["limon", "limon"],
+          "puntaje": 58.0,
+          "subpuntajes": {"agua": 50, "ingresos": 80, "suelo": 40, "erosion": 60, "clima": 65, "mercado": 85},
+          "factores": [
+            {"regla_id": "R-ROT-MONO", "efecto": "en_contra", "descripcion": "Repetir el mismo cultivo cansa el suelo", "indicador_ids": []}
+          ],
+          "confianza": "media"
+        },
+        {
+          "rotacion_id": "agua",
+          "nombre": "Enfoque en ahorrar agua",
+          "es_actual": false,
+          "secuencia": ["limon", "frijol_caupi"],
+          "puntaje": 69.0,
+          "subpuntajes": {"agua": 80, "ingresos": 65, "suelo": 70, "erosion": 70, "clima": 70, "mercado": 60},
+          "factores": [
+            {"regla_id": "R-ROT-CAUPI-AGUA", "efecto": "a_favor", "descripcion": "El frijol caupí necesita menos agua", "indicador_ids": ["ind-humedad_suelo"]}
+          ],
+          "confianza": "baja"
+        },
+        {
+          "rotacion_id": "suelo",
+          "nombre": "Enfoque en cuidar el suelo",
+          "es_actual": false,
+          "secuencia": ["limon", "cobertura_leguminosa"],
+          "puntaje": 66.0,
+          "subpuntajes": {"agua": 65, "ingresos": 55, "suelo": 90, "erosion": 85, "clima": 65, "mercado": 45},
+          "factores": [
+            {"regla_id": "R-ROT-COBERTURA", "efecto": "a_favor", "descripcion": "Una cobertura protege el suelo y le devuelve nitrógeno", "indicador_ids": []}
+          ],
+          "confianza": "baja"
+        }
+      ],
+      "lagunas": [
+        "Datos de ejemplo [SUPUESTO]: no son mediciones reales.",
+        "No hay dato de vegetación de octubre por nubes."
+      ]
+    }
+  ]
+}

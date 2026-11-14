@@ -26,6 +26,9 @@ venv/
 .pytest_cache/
 .ruff_cache/
 *.pyc
+*.egg-info/
+.coverage
+.mypy_cache/
 
 # Flutter
 app/build/

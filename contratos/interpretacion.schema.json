@@ -1,0 +1,320 @@
+{
+  "$defs": {
+    "Entorno": {
+      "enum": [
+        "dev",
+        "prod"
+      ],
+      "title": "Entorno",
+      "type": "string"
+    },
+    "Evidencia": {
+      "additionalProperties": false,
+      "properties": {
+        "frase": {
+          "title": "Frase",
+          "type": "string"
+        },
+        "indicador_id": {
+          "title": "Indicador Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indicador_id",
+        "frase"
+      ],
+      "title": "Evidencia",
+      "type": "object"
+    },
+    "InterpretacionLLM": {
+      "additionalProperties": false,
+      "description": "Esquema que el LLM debe llenar para una zona.",
+      "properties": {
+        "cultivos": {
+          "items": {
+            "$ref": "#/$defs/TextoCultivo"
+          },
+          "title": "Cultivos",
+          "type": "array"
+        },
+        "indicadores": {
+          "items": {
+            "$ref": "#/$defs/TextoIndicador"
+          },
+          "title": "Indicadores",
+          "type": "array"
+        },
+        "resumen_zona": {
+          "title": "Resumen Zona",
+          "type": "string"
+        },
+        "rotaciones": {
+          "items": {
+            "$ref": "#/$defs/TextoRotacion"
+          },
+          "title": "Rotaciones",
+          "type": "array"
+        }
+      },
+      "required": [
+        "resumen_zona",
+        "indicadores",
+        "cultivos",
+        "rotaciones"
+      ],
+      "title": "InterpretacionLLM",
+      "type": "object"
+    },
+    "InterpretacionZona": {
+      "additionalProperties": false,
+      "properties": {
+        "aviso": {
+          "const": "Esta herramienta apoya tu decisión; no reemplaza a un experto local.",
+          "default": "Esta herramienta apoya tu decisión; no reemplaza a un experto local.",
+          "title": "Aviso",
+          "type": "string"
+        },
+        "contenido": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InterpretacionLLM"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "modelo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Modelo"
+        },
+        "origen": {
+          "$ref": "#/$defs/Origen"
+        },
+        "problemas": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Problemas",
+          "type": "array"
+        },
+        "request_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Request Id"
+        },
+        "zona_id": {
+          "title": "Zona Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "zona_id",
+        "origen"
+      ],
+      "title": "InterpretacionZona",
+      "type": "object"
+    },
+    "Origen": {
+      "enum": [
+        "llm",
+        "plantilla",
+        "error"
+      ],
+      "title": "Origen",
+      "type": "string"
+    },
+    "TextoCultivo": {
+      "additionalProperties": false,
+      "properties": {
+        "a_favor": {
+          "items": {
+            "type": "string"
+          },
+          "title": "A Favor",
+          "type": "array"
+        },
+        "cuidados": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Cuidados",
+          "type": "array"
+        },
+        "cultivo_id": {
+          "title": "Cultivo Id",
+          "type": "string"
+        },
+        "en_contra": {
+          "items": {
+            "type": "string"
+          },
+          "title": "En Contra",
+          "type": "array"
+        },
+        "evidencia": {
+          "items": {
+            "$ref": "#/$defs/Evidencia"
+          },
+          "title": "Evidencia",
+          "type": "array"
+        },
+        "por_que": {
+          "title": "Por Que",
+          "type": "string"
+        },
+        "temporada": {
+          "title": "Temporada",
+          "type": "string"
+        }
+      },
+      "required": [
+        "cultivo_id",
+        "temporada",
+        "por_que",
+        "a_favor",
+        "en_contra",
+        "cuidados",
+        "evidencia"
+      ],
+      "title": "TextoCultivo",
+      "type": "object"
+    },
+    "TextoIndicador": {
+      "additionalProperties": false,
+      "properties": {
+        "indicador_id": {
+          "title": "Indicador Id",
+          "type": "string"
+        },
+        "texto": {
+          "title": "Texto",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indicador_id",
+        "texto"
+      ],
+      "title": "TextoIndicador",
+      "type": "object"
+    },
+    "TextoRotacion": {
+      "additionalProperties": false,
+      "properties": {
+        "beneficios": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Beneficios",
+          "type": "array"
+        },
+        "evidencia": {
+          "items": {
+            "$ref": "#/$defs/Evidencia"
+          },
+          "title": "Evidencia",
+          "type": "array"
+        },
+        "lagunas": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Lagunas",
+          "type": "array"
+        },
+        "por_que": {
+          "title": "Por Que",
+          "type": "string"
+        },
+        "riesgos_validar_experto": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Riesgos Validar Experto",
+          "type": "array"
+        },
+        "rotacion_id": {
+          "title": "Rotacion Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rotacion_id",
+        "por_que",
+        "evidencia",
+        "beneficios",
+        "lagunas",
+        "riesgos_validar_experto"
+      ],
+      "title": "TextoRotacion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Archivo `interpretacion.json` (de `interprete-llm`) o `interpretacion_verificada.json`.",
+  "properties": {
+    "entorno": {
+      "$ref": "#/$defs/Entorno"
+    },
+    "run_id": {
+      "pattern": "^\\d{4}-\\d{2}-[a-z0-9]{6}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "verificada": {
+      "title": "Verificada",
+      "type": "boolean"
+    },
+    "zonas": {
+      "items": {
+        "$ref": "#/$defs/InterpretacionZona"
+      },
+      "title": "Zonas",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "entorno",
+    "verificada",
+    "zonas"
+  ],
+  "title": "Interpretaciones",
+  "type": "object"
+}

@@ -1,0 +1,186 @@
+{
+  "$defs": {
+    "Evidencia": {
+      "additionalProperties": false,
+      "properties": {
+        "frase": {
+          "title": "Frase",
+          "type": "string"
+        },
+        "indicador_id": {
+          "title": "Indicador Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indicador_id",
+        "frase"
+      ],
+      "title": "Evidencia",
+      "type": "object"
+    },
+    "TextoCultivo": {
+      "additionalProperties": false,
+      "properties": {
+        "a_favor": {
+          "items": {
+            "type": "string"
+          },
+          "title": "A Favor",
+          "type": "array"
+        },
+        "cuidados": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Cuidados",
+          "type": "array"
+        },
+        "cultivo_id": {
+          "title": "Cultivo Id",
+          "type": "string"
+        },
+        "en_contra": {
+          "items": {
+            "type": "string"
+          },
+          "title": "En Contra",
+          "type": "array"
+        },
+        "evidencia": {
+          "items": {
+            "$ref": "#/$defs/Evidencia"
+          },
+          "title": "Evidencia",
+          "type": "array"
+        },
+        "por_que": {
+          "title": "Por Que",
+          "type": "string"
+        },
+        "temporada": {
+          "title": "Temporada",
+          "type": "string"
+        }
+      },
+      "required": [
+        "cultivo_id",
+        "temporada",
+        "por_que",
+        "a_favor",
+        "en_contra",
+        "cuidados",
+        "evidencia"
+      ],
+      "title": "TextoCultivo",
+      "type": "object"
+    },
+    "TextoIndicador": {
+      "additionalProperties": false,
+      "properties": {
+        "indicador_id": {
+          "title": "Indicador Id",
+          "type": "string"
+        },
+        "texto": {
+          "title": "Texto",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indicador_id",
+        "texto"
+      ],
+      "title": "TextoIndicador",
+      "type": "object"
+    },
+    "TextoRotacion": {
+      "additionalProperties": false,
+      "properties": {
+        "beneficios": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Beneficios",
+          "type": "array"
+        },
+        "evidencia": {
+          "items": {
+            "$ref": "#/$defs/Evidencia"
+          },
+          "title": "Evidencia",
+          "type": "array"
+        },
+        "lagunas": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Lagunas",
+          "type": "array"
+        },
+        "por_que": {
+          "title": "Por Que",
+          "type": "string"
+        },
+        "riesgos_validar_experto": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Riesgos Validar Experto",
+          "type": "array"
+        },
+        "rotacion_id": {
+          "title": "Rotacion Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rotacion_id",
+        "por_que",
+        "evidencia",
+        "beneficios",
+        "lagunas",
+        "riesgos_validar_experto"
+      ],
+      "title": "TextoRotacion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Esquema que el LLM debe llenar para una zona.",
+  "properties": {
+    "cultivos": {
+      "items": {
+        "$ref": "#/$defs/TextoCultivo"
+      },
+      "title": "Cultivos",
+      "type": "array"
+    },
+    "indicadores": {
+      "items": {
+        "$ref": "#/$defs/TextoIndicador"
+      },
+      "title": "Indicadores",
+      "type": "array"
+    },
+    "resumen_zona": {
+      "title": "Resumen Zona",
+      "type": "string"
+    },
+    "rotaciones": {
+      "items": {
+        "$ref": "#/$defs/TextoRotacion"
+      },
+      "title": "Rotaciones",
+      "type": "array"
+    }
+  },
+  "required": [
+    "resumen_zona",
+    "indicadores",
+    "cultivos",
+    "rotaciones"
+  ],
+  "title": "InterpretacionLLM",
+  "type": "object"
+}
