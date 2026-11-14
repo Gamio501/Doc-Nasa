@@ -8,7 +8,7 @@ Convierte `hechos.json` en textos simples por zona con la Claude API y **salida 
 
 ```bash
 # Desde la raíz del repo, con el entorno virtual activo
-pip install -r services/interprete-llm/requirements.txt   # una vez (desde la carpeta del servicio)
+(cd services/interprete-llm && pip install -r requirements.txt)   # una vez
 export ANTHROPIC_API_KEY=...                               # nunca en el código ni en git
 
 python -m interprete \
