@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "files": [
+    "assets/manifest-template.ts",
+    "assets/next-config-serwist.ts",
+    "assets/sw-manual-template.js",
+    "assets/sw-serwist-template.ts",
+    "references/caching-strategies.md",
+    "references/ios-quirks.md",
+    "references/offline-data.md",
+    "references/push-notifications.md",
+    "references/service-worker-manual.md",
+    "references/serwist-setup.md",
+    "references/troubleshooting.md",
+    "scripts/generate_pwa_config.py"
+  ]
+}

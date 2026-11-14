@@ -16,6 +16,9 @@
 - **Líder del documento:** Ian Andrade Gamio (Ingeniería de Sistemas y Computación, UTP; experiencia en desarrollo web y automatización con IA).
 - **Idioma de trabajo:** español. Código y nombres técnicos en inglés cuando sea convención.
 - **Objetivo de la semana previa:** llegar al hackathon con roles definidos, alcance acotado (región y cultivos), datos NASA ya probados, repositorio listo y pitch esbozado.
+- **Región elegida:** Piura, Perú (valle Piura/Chira; distrito exacto por confirmar con el agrónomo).
+- **Cultivos elegidos:** Mango y Limón (confirmados por el agrónomo). Tercer cultivo pendiente de la llamada.
+- **Tipo de agricultor:** Predominan agricultores adultos mayores (tercera edad) y jóvenes que quieren iniciarse. Tipo de operación (tradicional vs. empresa) por confirmar con el agrónomo.
 
 ---
 
@@ -85,9 +88,15 @@ SMAP, ECOSTRESS, GPM, Landsat, MODIS, NASA POWER, GRACE y GRACE-FO, SRTM (u otro
 - Puntuación multicriterio con pesos ajustables por el agricultor (modelo simple y explicable).
 
 ### Aplicación
-- **Frontend:** web responsive; Leaflet o MapLibre para mapas; gráficos con Chart.js, Recharts o similar.
-- **Prototipado rápido alternativo:** Streamlit.
-- **IA generativa:** para explicar en lenguaje sencillo el resultado y las lagunas de información, siempre con las cifras calculadas por el modelo (la IA no inventa datos).
+- **Frontend:** web responsive 100% (sin instalación); **Leaflet.js + Leaflet Draw** para mapas y selección de parcela; gráficos con Chart.js, Recharts o similar.
+- **Ubicación:** GPS del navegador (`navigator.geolocation`); el usuario marca su campo dibujándolo en el mapa (sin coordenadas manuales).
+- **Backend:** Python con **FastAPI** (o Flask); consulta APIs NASA y calcula indicadores/alertas.
+- **Prototipado rápido alternativo:** Streamlit (plan B).
+- **IA generativa:** diferida por ahora; el equipo decide mantenerla fuera del alcance inicial. Si se usa, solo para redactar explicaciones con cifras ya calculadas (la IA no inventa datos).
+
+### Herramientas peruanas existentes (referencia)
+- MIDAGRI, INIA (GEOINIA), SENASA (alertas fitosanitarias), juntas de usuarios de riego (ej. Chira-Piura).
+- **Diferenciación:** las herramientas estatales son macro y con errores de servicio; nuestra app es **hiper-personalizada a nivel de parcela**, simple y confiable (usa APIs NASA directas).
 
 ### Colaboración
 - Repositorio Git (GitHub), `README.md`, este `AGENTS.md`.
@@ -187,6 +196,13 @@ Estado: ✅ adoptada · 🟡 por evaluar · ⬜ sin decidir
 | 15 | Comparador visual lado a lado de las 3 estrategias | 🟡 |
 | 16 | Videopitch con historia de un agricultor (conecta con el tema Artes y multimedia) | ⬜ |
 | 17 | Streamlit como plan B de prototipo rápido | ⬜ |
+| 18 | **Diagnóstico Express del Terreno:** el agricultor marca su parcela en el mapa y la app genera análisis general (NDVI, humedad, temperatura) con datos NASA antes de recomendar rotaciones | ✅ |
+| 19 | **Ubicación por GPS automático** (sin coordenadas manuales): detectar posición del navegador y que el usuario dibuje su campo con Leaflet Draw | ✅ |
+| 20 | **Alertas visuales semáforo:** 🟢 a salvo / 🟡 atención / 🔴 peligro para temperatura, sequía y salud vegetal (NDVI); lenguaje simple, sin gráficos técnicos | ✅ |
+| 21 | **Demo mínima web:** GPS → mapa → selección de campo → tarjeta de nivel de vegetación (NDVI). Solo eso para probar el flujo completo en 1 día | ✅ |
+| 22 | **Sin IA generativa por ahora:** modelo de reglas matemáticas transparente; la IA se evalúa después si sobra tiempo | ✅ |
+| 23 | **Guía para jóvenes que inicia** en agricultura (modo aprendiz) integrada a la app | 🟡 |
+| 24 | **Diferenciar de herramientas estatales** (MIDAGRI, INIA, SENASA): mostrar en el pitch que conocemos el ecosistema local y aportamos personalización a nivel de parcela | ✅ |
 
 ---
 
@@ -203,6 +219,8 @@ Estado: ✅ adoptada · 🟡 por evaluar · ⬜ sin decidir
 | Que la IA genere cifras o predicciones por sí sola | Riesgo de datos inventados; solo debe explicar resultados calculados |
 | Integrar todos los datasets sugeridos | Mejor pocos indicadores bien integrados que muchos a medias |
 | Reemplazar la validación del experto local | Contradice el espíritu del desafío |
+| IA generativa y reconocimiento de fruto por cámara (por ahora) | Añade complejidad y riesgo de errores en el hackathon; modelo de reglas transparente es más confiable y rápido |
+| Seguimiento del crecimiento del fruto paso a paso | Amplía mucho el alcance; queda para futura iteración |
 
 ---
 
@@ -210,13 +228,19 @@ Estado: ✅ adoptada · 🟡 por evaluar · ⬜ sin decidir
 
 - [ ] Fecha y duración exactas del hackathon
 - [ ] Tamaño y perfiles del equipo
-- [ ] Región y cultivos elegidos
-- [ ] Mentor agrónomo
+- [x] Región elegida: Piura (distrito/valle exacto pendiente de confirmar con agrónomo)
+- [x] Cultivos: Mango y Limón confirmados; **3er cultivo pendiente de la llamada con el agrónomo**
+- [ ] Mentor agrónomo: llamada pendiente (preguntas preparadas)
+- [ ] Tipo de agricultor: ¿tradicional o empresa? (preguntar al agrónomo)
+- [ ] Contactos de agricultores para validar UX (joven + adulto mayor) — preguntar al agrónomo
+- [ ] Flujo de decisión real del agricultor (qué revisa antes de sembrar/regar) — preguntar al agrónomo
+- [ ] Qué datos ve en la app el agrónomo como más útiles — preguntar al agrónomo
 - [ ] Criterios de evaluación y reglas oficiales
 - [ ] Revisar pestaña Recursos del desafío
 - [ ] Registro en Earthdata y Earth Engine
 - [ ] Herramientas de comunicación y gestión de tareas
 - [ ] Plan B si falla un dataset o la conexión
+- [ ] Construir la demo mínima web (GPS → mapa → parcela → NDVI)
 
 ---
 
@@ -225,3 +249,4 @@ Estado: ✅ adoptada · 🟡 por evaluar · ⬜ sin decidir
 | Fecha | Cambio | Autor |
 |---|---|---|
 | 2026-11-07 | Creación del documento | Ian / Claude |
+| 2026-11-12 | Región Piura, cultivos Mango/Limón, ideas 18-24 (demo GPS+NDVI, alertas semáforo, sin IA), stack web completo (Leaflet+FastAPI), pendientes de llamada con agrónomo | Ian / Claude |

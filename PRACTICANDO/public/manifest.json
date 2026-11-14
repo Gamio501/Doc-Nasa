@@ -1,0 +1,18 @@
+{
+  "name": "App del Clima NASA",
+  "short_name": "Clima NASA",
+  "description": "Consulta el clima de cualquier lugar y fecha con datos de la NASA.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f4f5",
+  "theme_color": "#2563eb",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
