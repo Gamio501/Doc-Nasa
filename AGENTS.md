@@ -169,6 +169,7 @@ Una persona puede asumir dos roles. Cada rol debe tener al menos un responsable 
 - Usar lenguaje sencillo para el usuario final (agricultor).
 - Registrar en la sección 8 o 9 toda idea nueva o descartada.
 - Marcar con `[SUPUESTO]` cualquier dato que no esté verificado.
+- **Antes de cualquier commit, push o Pull Request, leer y seguir [`REGLAS_GIT.md`](REGLAS_GIT.md).** Nunca hacer push a `main` ni a `develop`, y nunca aprobar ni fusionar un Pull Request propio.
 
 ---
 
@@ -249,3 +250,4 @@ Estado: ✅ adoptada · 🟡 por evaluar · ⬜ sin decidir
 |---|---|---|
 | 2026-11-07 | Creación del documento | Ian / Claude |
 | 2026-11-12 | Región Piura, cultivos Mango/Limón, ideas 18-24 (demo GPS+NDVI, alertas semáforo, sin IA), stack web completo (Leaflet+FastAPI), pendientes de llamada con agrónomo | Ian / Claude |
+| 2026-11-14 | Reglamento de Git para IA y personas (`REGLAS_GIT.md`) y regla en la sección 7 | Hebert / Claude |

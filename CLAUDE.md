@@ -1,0 +1,2 @@
+@AGENTS.md
+@REGLAS_GIT.md
