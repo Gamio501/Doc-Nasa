@@ -109,12 +109,11 @@ SMAP, ECOSTRESS, GPM, Landsat, MODIS, NASA POWER, GRACE y GRACE-FO, SRTM (u otro
 
 | Rol | Responsabilidades | Prioridad | Responsable |
 |---|---|---|---|
-| Líder / storyteller | Alcance, coordinación, pitch, video, documentación | Imprescindible | `[POR DEFINIR]` |
-| Científico/a de datos geoespaciales | Descargar y procesar datos NASA, armonizar resoluciones, calcular índices y anomalías | Imprescindible | `[POR DEFINIR]` |
-| Desarrollador/a full-stack / frontend | App web, mapas, gráficos, lógica de comparación de estrategias | Imprescindible | `[POR DEFINIR]` |
-| Conocimiento agronómico | Validar cultivos y rotaciones de la zona; fuente de reglas agronómicas | Muy importante | `[POR DEFINIR]` |
-| Diseñador/a UX/UI | Interfaz clara para agricultores con poca experiencia técnica | Importante | `[POR DEFINIR]` |
-| IA / modelado (opcional) | Modelo explicable, incertidumbre, explicaciones en lenguaje natural | Opcional | `[POR DEFINIR]` |
+| Líder / storyteller | Alcance, coordinación, pitch, video, documentación | Imprescindible | Persona 1 |
+| Científico/a de datos geoespaciales | Pipeline NASA, Earth Engine, indicadores, paquete mensual | Imprescindible | Persona 2 |
+| Desarrollador/a Flutter (mobile) | App offline, SQLite, mapa, GPS, UI | Imprescindible | Persona 3 |
+| Conocimiento agronómico | Cultivos, rotaciones, reglas, tips, glosario | Muy importante | Persona 4 |
+| IA / UX (combinado) | LLM structured outputs, verificador, copy simple, semáforo | Importante | Persona 5 |
 
 Una persona puede asumir dos roles. Cada rol debe tener al menos un responsable y un suplente.
 
