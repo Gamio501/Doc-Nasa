@@ -1,0 +1,39 @@
+# Secretos: nunca al repositorio
+*.env
+!*.example.env
+.env*
+!.env.example
+*.pem
+*.key
+*service-account*.json
+credentials*.json
+
+# Datos pesados y corridas del pipeline
+runs/
+*.parquet
+*.nc
+*.tif
+*.tiff
+*.hdf
+*.h5
+*.sqlite.gz
+!app/assets/paquete_demo/**
+
+# Python
+__pycache__/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+
+# Flutter
+app/build/
+app/.dart_tool/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/

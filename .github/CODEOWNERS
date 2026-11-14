@@ -1,0 +1,15 @@
+# Quién revisa cada carpeta. Reemplazar usuario-persona-N por el usuario real de GitHub
+# y quitar el # de cada línea (ver ARQUITECTURA.md §5).
+#
+# /docs/                     usuario-persona-1
+# /services/extractor/       usuario-persona-2
+# /services/calculador/      usuario-persona-2 usuario-persona-4
+# /services/publicador/      usuario-persona-2
+# /orquestador/              usuario-persona-2
+# /infra/                    usuario-persona-2
+# /app/                      usuario-persona-3
+# /agronomia/                usuario-persona-4
+# /services/interprete-llm/  usuario-persona-5
+# /services/verificador/     usuario-persona-5
+# /diseno/                   usuario-persona-5
+# /contratos/                usuario-persona-2 usuario-persona-3 usuario-persona-5
