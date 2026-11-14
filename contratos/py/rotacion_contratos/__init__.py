@@ -1,7 +1,7 @@
 """Modelos Python de los contratos v1 (fuente de verdad de los JSON Schema)."""
 
-from contratos.hechos import SCHEMA_VERSION, Hechos, Zona
-from contratos.interpretacion import (
+from rotacion_contratos.hechos import SCHEMA_VERSION, Hechos, Zona
+from rotacion_contratos.interpretacion import (
     AVISO_EXPERTO,
     Interpretaciones,
     InterpretacionLLM,

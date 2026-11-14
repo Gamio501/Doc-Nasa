@@ -10,9 +10,9 @@ from typing import Any
 import pytest
 from pydantic import ValidationError
 
-from contratos.exportar import DESTINO, ESQUEMAS, renderizar
-from contratos.hechos import Hechos
-from contratos.interpretacion import AVISO_EXPERTO, InterpretacionZona, Origen
+from rotacion_contratos.exportar import DESTINO, ESQUEMAS, renderizar
+from rotacion_contratos.hechos import Hechos
+from rotacion_contratos.interpretacion import AVISO_EXPERTO, InterpretacionZona, Origen
 
 EJEMPLO = DESTINO / "ejemplos" / "hechos_ejemplo.json"
 
@@ -107,7 +107,7 @@ def test_interpretacion_zona_lleva_siempre_el_aviso() -> None:
 @pytest.mark.parametrize("nombre", sorted(ESQUEMAS))
 def test_los_json_schema_estan_actualizados(nombre: str) -> None:
     ruta: Path = DESTINO / nombre
-    assert ruta.exists(), f"Falta {nombre}: correr `python -m contratos.exportar`"
+    assert ruta.exists(), f"Falta {nombre}: correr `python -m rotacion_contratos.exportar`"
     assert ruta.read_text(encoding="utf-8") == renderizar(ESQUEMAS[nombre]), (
-        f"{nombre} desactualizado: correr `python -m contratos.exportar`"
+        f"{nombre} desactualizado: correr `python -m rotacion_contratos.exportar`"
     )

@@ -16,16 +16,16 @@ JSON Schema versionados (`schema_version`). Se escriben **antes** del código.
 
 ## Fuente de verdad
 
-Los modelos Python de `py/contratos/` (pydantic) generan los `*.schema.json`. **No editar los JSON a mano**:
+Los modelos Python de `py/rotacion_contratos/` (pydantic) generan los `*.schema.json`. **No editar los JSON a mano**:
 
 ```bash
 cd contratos/py
 pip install -e .              # una vez
-python -m contratos.exportar  # regenera los *.schema.json
+python -m rotacion_contratos.exportar  # regenera los *.schema.json
 pytest                        # falla si un esquema quedó desactualizado
 ```
 
-Los servicios Python importan los modelos (`from contratos import Hechos`); Flutter genera los suyos desde los `*.schema.json`.
+Los servicios Python importan los modelos (`from rotacion_contratos import Hechos`); Flutter genera los suyos desde los `*.schema.json`.
 
 ## Reglas
 

@@ -12,7 +12,7 @@ from typing import Final, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from contratos.hechos import PATRON_RUN_ID, Entorno
+from rotacion_contratos.hechos import PATRON_RUN_ID, Entorno
 
 AVISO_EXPERTO: Final = "Esta herramienta apoya tu decisión; no reemplaza a un experto local."
 

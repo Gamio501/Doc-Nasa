@@ -1,5 +1,5 @@
 [project]
-name = "contratos"
+name = "rotacion-contratos"
 version = "1.0.0"
 description = "Modelos de los contratos v1 entre servicios y app"
 requires-python = ">=3.11"
@@ -10,7 +10,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["contratos"]
+packages = ["rotacion_contratos"]
 
 [tool.ruff]
 line-length = 100

@@ -1,6 +1,6 @@
 """Genera los JSON Schema de `contratos/` desde los modelos Python.
 
-Uso: `python -m contratos.exportar` (desde `contratos/py`). Un test falla si
+Uso: `python -m rotacion_contratos.exportar` (desde `contratos/py`). Un test falla si
 los archivos quedaron desactualizados.
 """
 
@@ -11,8 +11,8 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from contratos.hechos import Hechos
-from contratos.interpretacion import Interpretaciones, InterpretacionLLM
+from rotacion_contratos.hechos import Hechos
+from rotacion_contratos.interpretacion import Interpretaciones, InterpretacionLLM
 
 DESTINO = Path(__file__).resolve().parents[2]
 
