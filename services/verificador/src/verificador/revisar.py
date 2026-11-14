@@ -8,8 +8,8 @@ from collections.abc import Hashable, Iterable, Iterator, Sequence, Set
 from dataclasses import dataclass
 from enum import StrEnum
 
-from contratos import InterpretacionLLM, Zona
-from contratos.interpretacion import TextoCultivo, TextoRotacion
+from rotacion_contratos import InterpretacionLLM, Zona
+from rotacion_contratos.interpretacion import TextoCultivo, TextoRotacion
 from verificador.numeros import cifras_permitidas, coincide, numeros_en
 
 MAX_RESUMEN = 300

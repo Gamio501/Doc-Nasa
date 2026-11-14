@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from contratos import Zona
+from rotacion_contratos import Zona
 
 
 def cargar_sistema(ruta: Path) -> str:

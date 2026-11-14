@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from contratos import InterpretacionLLM, Zona
-from contratos.interpretacion import Evidencia
+from rotacion_contratos import InterpretacionLLM, Zona
+from rotacion_contratos.interpretacion import Evidencia
 from tests.conftest import contenido_bueno
-from verificador.plantillas import RIESGO_SIEMPRE, formatear, plantilla
+from verificador.plantillas import RIESGO_SIEMPRE, enumerar, formatear, plantilla
 from verificador.revisar import Problema, Severidad, revisar
 
 
@@ -101,12 +101,25 @@ def test_la_plantilla_usa_cifras_reales_y_avisa_datos_faltantes(zona: Zona) -> N
         "Lluvia del mes: 2 mm en 2026-10, 60 % menos que lo normal (dato de tu zona)."
     )
     assert "sin dato este mes" in textos["ind-vegetacion"]
-    assert "en rojo" in contenido.resumen_zona and "Algunos datos faltan" in contenido.resumen_zona
+    assert contenido.resumen_zona == (
+        "Atención en tu zona: lluvia del mes y humedad del suelo en rojo este mes. "
+        "Algunos datos faltan."
+    )
+    assert "tiene aptitud alta" in contenido.cultivos[0].por_que
     actual = next(r for r in contenido.rotaciones if r.rotacion_id == "actual")
     assert "Es la que usas hoy." in actual.por_que
     assert actual.riesgos_validar_experto[-1] == RIESGO_SIEMPRE
     poco_segura = next(r for r in contenido.rotaciones if r.rotacion_id == "agua")
     assert any("poco segura" in t for t in poco_segura.lagunas)
+
+
+def test_enumerar() -> None:
+    assert (enumerar([]), enumerar(["a"]), enumerar(["a", "b"]), enumerar(["a", "b", "c"])) == (
+        "",
+        "a",
+        "a y b",
+        "a, b y c",
+    )
 
 
 def test_formatear_numeros() -> None:

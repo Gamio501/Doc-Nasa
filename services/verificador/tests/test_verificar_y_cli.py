@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from contratos import Hechos, Interpretaciones, InterpretacionZona, Origen
+from rotacion_contratos import Hechos, Interpretaciones, InterpretacionZona, Origen
 from tests.conftest import EJEMPLO, contenido_bueno, interpretaciones_con, zona_llm
 from verificador.__main__ import main
 from verificador.informe import renderizar_informe

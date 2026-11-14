@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from contratos import Zona
+from rotacion_contratos import Zona
 from verificador.numeros import cifras_permitidas, coincide, numeros_en
 
 

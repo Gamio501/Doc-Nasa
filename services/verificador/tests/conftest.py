@@ -6,8 +6,15 @@ from pathlib import Path
 
 import pytest
 
-from contratos import Hechos, Interpretaciones, InterpretacionLLM, InterpretacionZona, Origen, Zona
-from contratos.interpretacion import Evidencia, TextoCultivo, TextoIndicador, TextoRotacion
+from rotacion_contratos import (
+    Hechos,
+    Interpretaciones,
+    InterpretacionLLM,
+    InterpretacionZona,
+    Origen,
+    Zona,
+)
+from rotacion_contratos.interpretacion import Evidencia, TextoCultivo, TextoIndicador, TextoRotacion
 
 RAIZ_REPO = Path(__file__).resolve().parents[3]
 EJEMPLO = RAIZ_REPO / "contratos" / "ejemplos" / "hechos_ejemplo.json"

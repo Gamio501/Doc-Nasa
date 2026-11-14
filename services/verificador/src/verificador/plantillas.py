@@ -6,12 +6,28 @@ pasar las mismas reglas que el LLM (hay un test que lo comprueba).
 
 from __future__ import annotations
 
-from contratos import InterpretacionLLM, Zona
-from contratos.hechos import Confianza, Efecto, Escala, Factor, Indicador, Semaforo
-from contratos.interpretacion import Evidencia, TextoCultivo, TextoIndicador, TextoRotacion
+from rotacion_contratos import InterpretacionLLM, Zona
+from rotacion_contratos.hechos import (
+    Confianza,
+    Efecto,
+    Escala,
+    Factor,
+    Indicador,
+    Nivel,
+    Semaforo,
+)
+from rotacion_contratos.interpretacion import Evidencia, TextoCultivo, TextoIndicador, TextoRotacion
 
 RIESGO_SIEMPRE = "Revisa esta opción con un técnico o agrónomo de tu zona antes de decidir."
 CUIDADO_GENERAL = "Revisa el riego y el estado de tus plantas cada semana."
+APTITUD = {Nivel.ALTO: "alta", Nivel.MEDIO: "media", Nivel.BAJO: "baja"}
+
+
+def enumerar(elementos: list[str]) -> str:
+    """'a', 'a y b', 'a, b y c'."""
+    if len(elementos) <= 1:
+        return "".join(elementos)
+    return f"{', '.join(elementos[:-1])} y {elementos[-1]}"
 
 
 def formatear(valor: float) -> str:
@@ -31,7 +47,7 @@ def plantilla(zona: Zona, periodo: str) -> InterpretacionLLM:
                 cultivo_id=a.cultivo_id,
                 temporada=a.temporada,
                 por_que=(
-                    f"Para {a.temporada}, el {a.cultivo_nombre} tiene aptitud {a.nivel.value} "
+                    f"Para {a.temporada}, el {a.cultivo_nombre} tiene aptitud {APTITUD[a.nivel]} "
                     f"en tu zona ({formatear(a.puntaje)} de 100)."
                 ),
                 a_favor=_descripciones(a.factores, Efecto.A_FAVOR),
@@ -65,7 +81,7 @@ def plantilla(zona: Zona, periodo: str) -> InterpretacionLLM:
 def _resumen(zona: Zona) -> str:
     rojos = [i.nombre for i in zona.indicadores if i.semaforo is Semaforo.ROJO]
     texto = (
-        f"Atención en tu zona: {', '.join(rojos)} en rojo este mes."
+        f"Atención en tu zona: {enumerar(rojos)} en rojo este mes."
         if rojos
         else "Este mes no hay alertas rojas en tu zona."
     )

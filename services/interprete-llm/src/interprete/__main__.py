@@ -17,8 +17,8 @@ import sys
 from collections.abc import Callable, Sequence
 from pathlib import Path
 
-from contratos import Hechos
 from pydantic import ValidationError
+from rotacion_contratos import Hechos
 
 from interprete.cliente import ClienteClaude, ClienteLLM
 from interprete.config import Config

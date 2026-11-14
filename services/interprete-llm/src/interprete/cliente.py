@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import Protocol
 
 import anthropic
-from contratos import InterpretacionLLM
+from rotacion_contratos import InterpretacionLLM
 
 from interprete.config import Config
 

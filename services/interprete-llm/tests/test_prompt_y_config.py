@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
-from contratos import Zona
+from rotacion_contratos import Zona
 
 from interprete.config import MODELO_POR_DEFECTO, RAIZ_SERVICIO, Config
 from interprete.prompt import cargar_sistema, construir_mensaje

@@ -12,8 +12,8 @@ from __future__ import annotations
 import logging
 
 import anthropic
-from contratos import Hechos, Interpretaciones, InterpretacionZona, Origen, Zona
 from pydantic import ValidationError
+from rotacion_contratos import Hechos, Interpretaciones, InterpretacionZona, Origen, Zona
 
 from interprete.cliente import ClienteLLM
 from interprete.prompt import construir_mensaje

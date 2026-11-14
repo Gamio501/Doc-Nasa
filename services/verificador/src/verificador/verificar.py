@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from contratos import Hechos, Interpretaciones, InterpretacionZona, Origen, Zona
+from rotacion_contratos import Hechos, Interpretaciones, InterpretacionZona, Origen, Zona
 from verificador.plantillas import plantilla
 from verificador.revisar import Severidad, revisar
 

@@ -8,8 +8,8 @@ from pathlib import Path
 
 import httpx2
 import pytest
-from contratos import Hechos, InterpretacionLLM, Zona
-from contratos.interpretacion import Evidencia, TextoCultivo, TextoIndicador, TextoRotacion
+from rotacion_contratos import Hechos, InterpretacionLLM, Zona
+from rotacion_contratos.interpretacion import Evidencia, TextoCultivo, TextoIndicador, TextoRotacion
 
 from interprete.cliente import RespuestaLLM
 

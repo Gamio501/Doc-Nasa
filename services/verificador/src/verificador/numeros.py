@@ -5,8 +5,8 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from contratos import Zona
-from contratos.hechos import AptitudCultivo, Rotacion
+from rotacion_contratos import Zona
+from rotacion_contratos.hechos import AptitudCultivo, Rotacion
 
 # Un número que no está pegado a letras (evita el "3" de "m3" o el "2" de "T2M").
 _NUMERO = re.compile(r"(?<![A-Za-zÁÉÍÓÚáéíóúñÑ_\d])-?\d+(?:[.,]\d+)*(?![A-Za-zÁÉÍÓÚáéíóúñÑ_\d])")

@@ -19,7 +19,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from contratos import Hechos, Interpretaciones
+from rotacion_contratos import Hechos, Interpretaciones
 from verificador.informe import renderizar_informe
 from verificador.verificar import ErrorEntrada, verificar
 

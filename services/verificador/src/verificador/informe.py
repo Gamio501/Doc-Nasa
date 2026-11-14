@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from contratos import Hechos, Origen
+from rotacion_contratos import Hechos, Origen
 from verificador.verificar import FilaInforme
 
 UMBRAL_PLANTILLAS = 0.5

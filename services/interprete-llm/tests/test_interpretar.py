@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import anthropic
 import pytest
-from contratos import Hechos, InterpretacionLLM, Origen, Zona
 from pydantic import ValidationError
+from rotacion_contratos import Hechos, InterpretacionLLM, Origen, Zona
 
 from interprete.cliente import RespuestaLLM
 from interprete.interpretar import (

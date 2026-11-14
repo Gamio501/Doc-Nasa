@@ -9,7 +9,7 @@ from typing import Any
 
 import anthropic
 import pytest
-from contratos import Hechos, Interpretaciones, InterpretacionLLM, Origen, Zona
+from rotacion_contratos import Hechos, Interpretaciones, InterpretacionLLM, Origen, Zona
 
 from interprete.__main__ import main
 from interprete.cliente import ClienteClaude, ClienteLLM, RespuestaLLM
