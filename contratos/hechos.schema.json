@@ -1,0 +1,470 @@
+{
+  "$defs": {
+    "AptitudCultivo": {
+      "additionalProperties": false,
+      "properties": {
+        "confianza": {
+          "$ref": "#/$defs/Confianza"
+        },
+        "cultivo_id": {
+          "minLength": 1,
+          "title": "Cultivo Id",
+          "type": "string"
+        },
+        "cultivo_nombre": {
+          "minLength": 1,
+          "title": "Cultivo Nombre",
+          "type": "string"
+        },
+        "factores": {
+          "items": {
+            "$ref": "#/$defs/Factor"
+          },
+          "title": "Factores",
+          "type": "array"
+        },
+        "nivel": {
+          "$ref": "#/$defs/Nivel"
+        },
+        "puntaje": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Puntaje",
+          "type": "number"
+        },
+        "subpuntajes": {
+          "$ref": "#/$defs/Subpuntajes"
+        },
+        "temporada": {
+          "description": "Ej. 'nov-dic'",
+          "minLength": 1,
+          "title": "Temporada",
+          "type": "string"
+        }
+      },
+      "required": [
+        "cultivo_id",
+        "cultivo_nombre",
+        "temporada",
+        "puntaje",
+        "nivel",
+        "subpuntajes",
+        "factores",
+        "confianza"
+      ],
+      "title": "AptitudCultivo",
+      "type": "object"
+    },
+    "Confianza": {
+      "enum": [
+        "alta",
+        "media",
+        "baja"
+      ],
+      "title": "Confianza",
+      "type": "string"
+    },
+    "Efecto": {
+      "enum": [
+        "a_favor",
+        "en_contra"
+      ],
+      "title": "Efecto",
+      "type": "string"
+    },
+    "Entorno": {
+      "enum": [
+        "dev",
+        "prod"
+      ],
+      "title": "Entorno",
+      "type": "string"
+    },
+    "Escala": {
+      "description": "Si el dato describe la zona (~5–55 km) o casi la parcela (≤ 250 m).",
+      "enum": [
+        "zona",
+        "parcela"
+      ],
+      "title": "Escala",
+      "type": "string"
+    },
+    "Factor": {
+      "additionalProperties": false,
+      "description": "Una regla agronómica que pesó en un puntaje (sale de agronomia/reglas.yaml).",
+      "properties": {
+        "descripcion": {
+          "description": "En español simple",
+          "minLength": 1,
+          "title": "Descripcion",
+          "type": "string"
+        },
+        "efecto": {
+          "$ref": "#/$defs/Efecto"
+        },
+        "indicador_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Indicador Ids",
+          "type": "array"
+        },
+        "regla_id": {
+          "minLength": 1,
+          "title": "Regla Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "regla_id",
+        "efecto",
+        "descripcion",
+        "indicador_ids"
+      ],
+      "title": "Factor",
+      "type": "object"
+    },
+    "Indicador": {
+      "additionalProperties": false,
+      "description": "Un dato de la zona, ya limpio (-999 de la NASA llega como `None`).",
+      "properties": {
+        "confianza": {
+          "$ref": "#/$defs/Confianza"
+        },
+        "diferencia_pct": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "(valor - valor_normal) / valor_normal * 100, calculado por el código",
+          "title": "Diferencia Pct"
+        },
+        "escala": {
+          "$ref": "#/$defs/Escala"
+        },
+        "fuente": {
+          "description": "Producto exacto, ej. 'SMAP SPL3SMP_E'",
+          "minLength": 1,
+          "title": "Fuente",
+          "type": "string"
+        },
+        "id": {
+          "description": "Ej. ind-humedad_suelo",
+          "pattern": "^ind-[a-z0-9_]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "nombre": {
+          "description": "Nombre simple: 'humedad del suelo'",
+          "minLength": 1,
+          "title": "Nombre",
+          "type": "string"
+        },
+        "periodo": {
+          "pattern": "^\\d{4}-\\d{2}$",
+          "title": "Periodo",
+          "type": "string"
+        },
+        "resolucion_km": {
+          "exclusiveMinimum": 0,
+          "title": "Resolucion Km",
+          "type": "number"
+        },
+        "semaforo": {
+          "$ref": "#/$defs/Semaforo"
+        },
+        "unidad": {
+          "title": "Unidad",
+          "type": "string"
+        },
+        "valor": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Valor"
+        },
+        "valor_normal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Promedio histórico del mismo mes",
+          "title": "Valor Normal"
+        }
+      },
+      "required": [
+        "id",
+        "nombre",
+        "valor",
+        "unidad",
+        "periodo",
+        "valor_normal",
+        "diferencia_pct",
+        "resolucion_km",
+        "fuente",
+        "confianza",
+        "escala",
+        "semaforo"
+      ],
+      "title": "Indicador",
+      "type": "object"
+    },
+    "Nivel": {
+      "enum": [
+        "alto",
+        "medio",
+        "bajo"
+      ],
+      "title": "Nivel",
+      "type": "string"
+    },
+    "Rotacion": {
+      "additionalProperties": false,
+      "properties": {
+        "confianza": {
+          "$ref": "#/$defs/Confianza"
+        },
+        "es_actual": {
+          "title": "Es Actual",
+          "type": "boolean"
+        },
+        "factores": {
+          "items": {
+            "$ref": "#/$defs/Factor"
+          },
+          "title": "Factores",
+          "type": "array"
+        },
+        "nombre": {
+          "minLength": 1,
+          "title": "Nombre",
+          "type": "string"
+        },
+        "puntaje": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Puntaje",
+          "type": "number"
+        },
+        "rotacion_id": {
+          "description": "Ej. 'actual', 'agua', 'suelo'",
+          "minLength": 1,
+          "title": "Rotacion Id",
+          "type": "string"
+        },
+        "secuencia": {
+          "description": "cultivo_id por temporada",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Secuencia",
+          "type": "array"
+        },
+        "subpuntajes": {
+          "$ref": "#/$defs/Subpuntajes"
+        }
+      },
+      "required": [
+        "rotacion_id",
+        "nombre",
+        "es_actual",
+        "secuencia",
+        "puntaje",
+        "subpuntajes",
+        "factores",
+        "confianza"
+      ],
+      "title": "Rotacion",
+      "type": "object"
+    },
+    "Semaforo": {
+      "enum": [
+        "verde",
+        "amarillo",
+        "rojo",
+        "sin_dato"
+      ],
+      "title": "Semaforo",
+      "type": "string"
+    },
+    "Subpuntajes": {
+      "additionalProperties": false,
+      "description": "Puntaje 0–100 por criterio. El teléfono los combina con los deslizadores.",
+      "properties": {
+        "agua": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Agua",
+          "type": "number"
+        },
+        "clima": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Clima",
+          "type": "number"
+        },
+        "erosion": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Erosion",
+          "type": "number"
+        },
+        "ingresos": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Ingresos",
+          "type": "number"
+        },
+        "mercado": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Mercado",
+          "type": "number"
+        },
+        "suelo": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Suelo",
+          "type": "number"
+        }
+      },
+      "required": [
+        "agua",
+        "ingresos",
+        "suelo",
+        "erosion",
+        "clima",
+        "mercado"
+      ],
+      "title": "Subpuntajes",
+      "type": "object"
+    },
+    "Zona": {
+      "additionalProperties": false,
+      "properties": {
+        "aptitud_cultivos": {
+          "items": {
+            "$ref": "#/$defs/AptitudCultivo"
+          },
+          "minItems": 1,
+          "title": "Aptitud Cultivos",
+          "type": "array"
+        },
+        "celdas": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Celdas",
+          "type": "array"
+        },
+        "indicadores": {
+          "items": {
+            "$ref": "#/$defs/Indicador"
+          },
+          "minItems": 1,
+          "title": "Indicadores",
+          "type": "array"
+        },
+        "lagunas": {
+          "description": "Datos que faltan o son dudosos",
+          "items": {
+            "type": "string"
+          },
+          "title": "Lagunas",
+          "type": "array"
+        },
+        "nombre": {
+          "minLength": 1,
+          "title": "Nombre",
+          "type": "string"
+        },
+        "provincia": {
+          "minLength": 1,
+          "title": "Provincia",
+          "type": "string"
+        },
+        "rotaciones": {
+          "description": "El reto exige 3 o más",
+          "items": {
+            "$ref": "#/$defs/Rotacion"
+          },
+          "minItems": 3,
+          "title": "Rotaciones",
+          "type": "array"
+        },
+        "zona_id": {
+          "minLength": 1,
+          "title": "Zona Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "zona_id",
+        "nombre",
+        "provincia",
+        "celdas",
+        "indicadores",
+        "aptitud_cultivos",
+        "rotaciones",
+        "lagunas"
+      ],
+      "title": "Zona",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Archivo `hechos.json` de una corrida.",
+  "properties": {
+    "entorno": {
+      "$ref": "#/$defs/Entorno"
+    },
+    "periodo": {
+      "pattern": "^\\d{4}-\\d{2}$",
+      "title": "Periodo",
+      "type": "string"
+    },
+    "run_id": {
+      "description": "AAAA-MM-xxxxxx",
+      "pattern": "^\\d{4}-\\d{2}-[a-z0-9]{6}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "zonas": {
+      "items": {
+        "$ref": "#/$defs/Zona"
+      },
+      "minItems": 1,
+      "title": "Zonas",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "entorno",
+    "periodo",
+    "zonas"
+  ],
+  "title": "Hechos",
+  "type": "object"
+}
