@@ -1,0 +1,6 @@
+-e ../../contratos/py
+-e .
+pytest
+pytest-cov
+ruff
+mypy

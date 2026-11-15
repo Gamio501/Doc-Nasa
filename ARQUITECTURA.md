@@ -110,9 +110,8 @@ Doc-Nasa/
 │   ├── calculador/            # (Persona 2 + Persona 4)
 │   ├── interprete-llm/        # (Persona 5)
 │   │   ├── prompts/           # Prompt de sistema versionado (sistema_v1.md, …)
-│   │   ├── plantillas/        # Textos de respaldo sin LLM
 │   │   └── evals/             # Casos de prueba revisados por el agrónomo
-│   ├── verificador/           # (Persona 5)
+│   ├── verificador/           # (Persona 5) — incluye las plantillas de respaldo sin LLM
 │   └── publicador/            # (Persona 2)
 │   # Cada servicio: src/, tests/, Dockerfile, requirements.txt, README.md
 │
