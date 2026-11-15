@@ -7,6 +7,7 @@ App móvil Flutter que funciona sin internet y recomienda cultivos y rotaciones 
 1. [AGENTS.md](AGENTS.md) — reglas del proyecto, equipo y roles.
 2. [IDEA.md](IDEA.md) — qué construimos.
 3. [ARQUITECTURA.md](ARQUITECTURA.md) — servicios, carpetas, Git y entornos.
+4. [REGLAS_GIT.md](REGLAS_GIT.md) — reglamento obligatorio de Git y push (también para las IA).
 
 ## Cómo trabajar
 
